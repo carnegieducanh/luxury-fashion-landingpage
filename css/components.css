@@ -1,0 +1,130 @@
+/* Shared */
+.hero-title,
+.section-title,
+.atelier-title,
+.stories-title {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  color: var(--color-burgundy);
+}
+
+.hero-title,
+.atelier-title,
+.stories-title {
+  font-size: clamp(2.75rem, 5.6vw, 5.5rem);
+}
+
+.section-title {
+  font-size: clamp(2.25rem, 3.6vw, 3.5rem);
+  line-height: 1.2;
+}
+
+.eyebrow,
+.button,
+.text-link,
+.feature-title,
+.look-title,
+.mosaic-title,
+.tagline {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  line-height: 1.6;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-burgundy);
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 15px 28px;
+  background: var(--color-burgundy);
+  color: var(--color-ivory);
+  line-height: 1;
+  white-space: nowrap;
+  transition: background-color 0.4s;
+}
+
+.button:hover {
+  background: #4a1c21;
+}
+
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 28px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.text-link span {
+  padding: 0 6px 10px 0;
+  background: linear-gradient(var(--color-gold), var(--color-gold)) left bottom / 100% 1px no-repeat;
+  transition: background-size 0.5s;
+}
+
+.text-link:hover span {
+  background-size: 35% 1px;
+}
+
+.button i,
+.text-link i {
+  font-size: 1.125rem;
+  transition: transform 0.4s;
+}
+
+.text-link i {
+  color: var(--color-gold);
+}
+
+.button:hover i,
+.text-link:hover i {
+  transform: translateX(5px);
+}
+
+.ornament {
+  width: 24px;
+}
+
+.tagline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  text-align: center;
+  letter-spacing: 0.3em;
+}
+
+.tagline::before {
+  content: "";
+  width: min(260px, 70%);
+  height: 24px;
+  background:
+    url("../assets/icons/flower-8-petal.svg") center / 24px no-repeat,
+    linear-gradient(to right, transparent, var(--color-gold)) left center / 40% 1px no-repeat,
+    linear-gradient(to left, transparent, var(--color-gold)) right center / 40% 1px no-repeat;
+}
+
+/* Feature (icon + text) */
+.feature {
+  display: grid;
+  grid-template-columns: 52px 1fr;
+  column-gap: 26px;
+  align-items: start;
+}
+
+.feature-icon {
+  grid-row: span 2;
+  width: 52px;
+  height: 52px;
+  padding: 11px;
+  border: 1px solid var(--color-gold);
+  border-radius: 50%;
+}
+
+.feature-title {
+  margin-bottom: 8px;
+}

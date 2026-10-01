@@ -1,0 +1,202 @@
+/* Atelier */
+.atelier-intro {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  align-items: center;
+  padding-top: clamp(24px, 3vw, 48px);
+  border-top: 1px solid var(--color-line);
+}
+
+.atelier-content {
+  padding: 80px var(--gutter);
+}
+
+.atelier-title {
+  margin: 28px 0 32px;
+}
+
+.atelier-image {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  object-position: 60% 60%;
+  border-top-left-radius: 100% 100%;
+}
+
+.craft-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, clamp(150px, 12.5vw, 200px)) clamp(240px, 18vw, 280px);
+  grid-template-areas:
+    "mannequin steps velvet"
+    "mannequin steps machine"
+    "mannequin steps machine"
+    "mannequin steps button"
+    "spool     purpose purpose";
+  border-block: 1px solid var(--color-line);
+}
+
+.craft-grid > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.craft-mannequin {
+  grid-area: mannequin;
+}
+
+.craft-velvet {
+  grid-area: velvet;
+}
+
+.craft-machine {
+  grid-area: machine;
+}
+
+.craft-button {
+  grid-area: button;
+}
+
+.craft-spool {
+  grid-area: spool;
+}
+
+.craft-steps {
+  grid-area: steps;
+  display: grid;
+  grid-template-rows: subgrid;
+  border-inline: 1px solid var(--color-line);
+}
+
+.craft-steps .feature {
+  align-content: center;
+  padding: 24px clamp(24px, 3vw, 48px);
+}
+
+.craft-steps .feature + .feature {
+  border-top: 1px solid var(--color-line);
+}
+
+.craft-purpose {
+  position: relative;
+  grid-area: purpose;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 32px clamp(24px, 3vw, 48px);
+  border-left: 1px solid var(--color-line);
+}
+
+.craft-purpose::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 46%;
+  height: 150%;
+  background: url("../assets/images/fabric-burgundy.webp") center / cover;
+  border-top-left-radius: 100% 100%;
+}
+
+.craft-purpose p {
+  max-width: 54%;
+  margin-bottom: 28px;
+}
+
+@media (max-width: 1023px) {
+  .atelier-intro {
+    grid-template-columns: 1fr;
+  }
+
+  .atelier-content {
+    padding-bottom: 0;
+  }
+
+  .atelier-image {
+    aspect-ratio: 4 / 3;
+    border-top-left-radius: 100% 80%;
+  }
+
+  .craft-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto repeat(2, clamp(180px, 30vw, 300px)) clamp(200px, 36vw, 340px) auto;
+    grid-template-areas:
+      "steps     steps"
+      "mannequin velvet"
+      "mannequin machine"
+      "button    spool"
+      "purpose   purpose";
+  }
+
+  .craft-steps {
+    grid-template-rows: none;
+    grid-template-columns: 1fr 1fr;
+    border-inline: 0;
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  .craft-steps .feature {
+    padding-block: 40px;
+  }
+
+  .craft-steps .feature + .feature {
+    border-top: 0;
+  }
+
+  .craft-steps .feature:nth-child(n + 3) {
+    border-top: 1px solid var(--color-line);
+  }
+
+  .craft-steps .feature:nth-child(even) {
+    border-left: 1px solid var(--color-line);
+  }
+
+  .craft-purpose {
+    min-height: 280px;
+    padding-block: 48px;
+    border-left: 0;
+    border-top: 1px solid var(--color-line);
+  }
+
+  .craft-purpose::after {
+    width: 40%;
+    height: 100%;
+  }
+}
+
+@media (max-width: 767px) {
+  .craft-grid {
+    grid-template-rows: auto repeat(2, 42vw) 50vw auto;
+  }
+
+  .craft-steps {
+    grid-template-columns: 1fr;
+  }
+
+  .craft-steps .feature {
+    padding-block: 28px;
+  }
+
+  .craft-steps .feature:nth-child(n + 2) {
+    border-top: 1px solid var(--color-line);
+  }
+
+  .craft-steps .feature:nth-child(even) {
+    border-left: 0;
+  }
+
+  .craft-purpose {
+    padding-bottom: 180px;
+  }
+
+  .craft-purpose::after {
+    width: 70%;
+    height: 150px;
+  }
+
+  .craft-purpose p {
+    max-width: none;
+  }
+}

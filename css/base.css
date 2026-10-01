@@ -1,0 +1,97 @@
+/* Base: design tokens, reset, global elements
+   Breakpoints (used in each section file): 1199px, 1023px, 767px */
+:root {
+  --color-ivory: #f4f1ec;
+  --color-beige: #f6eee2;
+  --color-burgundy: #2b0f12;
+  --color-gold: #b88c4a;
+  --color-text: #4d3a36;
+  --color-line: rgba(184, 140, 74, 0.45);
+  --font-serif: "Playfair Display", "Times New Roman", serif;
+  /* Japanese glyphs fall back to Zen Kaku Gothic New. Only its 400 weight is loaded,
+     so Japanese renders at 400 even where the body weight is 300 (lighter is hard to read). */
+  --font-sans: "Montserrat", "Zen Kaku Gothic New", sans-serif;
+  --gutter: clamp(20px, 6vw, 96px);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--color-beige);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  font-weight: 300;
+  line-height: 2;
+  letter-spacing: 0.06em;
+  word-break: auto-phrase;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Keeps .reveal-right elements from widening the page while they slide in */
+main {
+  overflow-x: clip;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+h1,
+h2,
+h3,
+p,
+figure,
+blockquote,
+ul,
+ol {
+  margin: 0;
+}
+
+ul,
+ol {
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 1px solid var(--color-gold);
+  outline-offset: 4px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

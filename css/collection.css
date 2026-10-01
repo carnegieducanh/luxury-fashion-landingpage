@@ -1,0 +1,124 @@
+/* Collection */
+.collection {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-block: 1px solid var(--color-line);
+}
+
+.collection > * + * {
+  border-left: 1px solid var(--color-line);
+}
+
+.collection-card {
+  display: flex;
+  min-height: clamp(360px, 27vw, 460px);
+  overflow: hidden;
+}
+
+.collection-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 20px 40px clamp(24px, 3.4vw, 56px);
+}
+
+.collection-title {
+  margin: 20px 0 14px;
+  font-family: var(--font-serif);
+  font-size: 0.9375rem;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0.2em;
+  color: var(--color-burgundy);
+}
+
+.collection-body p {
+  margin-bottom: 32px;
+}
+
+.collection-image {
+  width: 42%;
+  object-fit: cover;
+}
+
+.collection-card:first-child .collection-image {
+  border-top-left-radius: 100% 30%;
+}
+
+.collection-card:last-child .collection-image {
+  border-bottom-left-radius: 100% 70%;
+}
+
+.collection-feature {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 48px 24px;
+  background: var(--color-burgundy);
+  text-align: center;
+}
+
+.collection-logo {
+  width: 40px;
+  margin-bottom: 28px;
+}
+
+.collection-feature .eyebrow,
+.collection-feature .text-link,
+.collection-season {
+  color: var(--color-ivory);
+}
+
+.collection-name {
+  margin: 10px 0 12px;
+  font-family: var(--font-serif);
+  font-size: clamp(2.25rem, 3.4vw, 3.25rem);
+  font-weight: 400;
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: var(--color-ivory);
+}
+
+.collection-season {
+  margin-bottom: 40px;
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 1199px) {
+  .collection {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .collection-feature {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    border-left: 0;
+  }
+
+  .collection-card {
+    border-top: 1px solid var(--color-line);
+  }
+}
+
+@media (max-width: 767px) {
+  .collection {
+    grid-template-columns: 1fr;
+  }
+
+  .collection > * + * {
+    border-left: 0;
+  }
+
+  .collection-card {
+    min-height: 320px;
+  }
+
+  .collection-feature {
+    padding-block: 56px;
+  }
+}

@@ -1,0 +1,149 @@
+/* Footer */
+/* The monogram is placed on the upper right of the silk and follows its position */
+.site-footer {
+  background:
+    url("../assets/icons/monogram.svg") right calc(3% + 38px) top 52px / auto 67px no-repeat,
+    var(--color-burgundy) url("../assets/images/footer-silk.webp") right 3% top 24px / auto 200px no-repeat;
+  color: rgba(244, 241, 236, 0.75);
+}
+
+.footer-inner {
+  display: grid;
+  grid-template-columns: 1.1fr 1.3fr 1.2fr;
+  gap: 40px clamp(32px, 4vw, 64px);
+  padding: 64px max(var(--gutter), 22vw) 56px var(--gutter);
+}
+
+.footer-brand {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-content: start;
+  column-gap: 24px;
+}
+
+.footer-brand img {
+  grid-row: span 2;
+  width: 40px;
+}
+
+.footer-name,
+.footer-title {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+.footer-tagline {
+  margin-top: 8px;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  line-height: 1.8;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-ivory);
+}
+
+.footer-nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+.footer-title {
+  margin-bottom: 14px;
+}
+
+.footer-nav a {
+  font-size: 0.75rem;
+  transition: color 0.3s;
+}
+
+.footer-nav a:hover {
+  color: var(--color-ivory);
+}
+
+.newsletter p {
+  font-size: 0.75rem;
+  line-height: 1.8;
+}
+
+.newsletter-form {
+  display: flex;
+  max-width: 320px;
+  margin-top: 20px;
+  border: 1px solid var(--color-gold);
+}
+
+.newsletter-form input {
+  flex: 1;
+  min-width: 0;
+  padding: 14px 20px;
+  background: transparent;
+  border: 0;
+  outline-offset: -4px;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  color: var(--color-ivory);
+}
+
+.newsletter-form input::placeholder {
+  color: rgba(244, 241, 236, 0.6);
+  text-transform: uppercase;
+}
+
+.newsletter-form button {
+  padding: 0 18px;
+  background: transparent;
+  border: 0;
+  color: var(--color-gold);
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: transform 0.4s;
+}
+
+.newsletter-form button:hover {
+  transform: translateX(4px);
+}
+
+.newsletter-message {
+  margin-top: 10px;
+  color: var(--color-gold);
+}
+
+.copyright {
+  padding: 20px var(--gutter);
+  border-top: 1px solid rgba(184, 140, 74, 0.25);
+  font-size: 0.625rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(244, 241, 236, 0.55);
+}
+
+@media (max-width: 1199px) {
+  .footer-inner {
+    grid-template-columns: 1fr 1fr;
+    padding-right: var(--gutter);
+    padding-bottom: 48px;
+  }
+
+  .footer-brand {
+    grid-column: 1 / -1;
+  }
+
+  .site-footer {
+    background-position: right calc(3% + 29px) top 45px, right 3% top 24px;
+    background-size: auto 50px, auto 150px;
+  }
+}
+
+@media (max-width: 767px) {
+  .footer-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .site-footer {
+    background-image: none;
+  }
+}

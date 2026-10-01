@@ -1,0 +1,88 @@
+/* Hero */
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: clamp(640px, 60vw, 1080px);
+  padding: 140px var(--gutter) 100px;
+  /* The whole wave is shown, as in the design: the curve sweeps from under the nav
+     down to the bottom left, with the wood panel at the right edge */
+  background: var(--color-ivory) url("../assets/images/hero-wave.webp") center / cover no-repeat;
+  overflow: hidden;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-title {
+  margin: 28px 0 32px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 24px 40px;
+  margin-top: 40px;
+}
+
+/* Cropped at the thigh by the hero's bottom edge */
+.hero-image {
+  position: absolute;
+  top: min(6.2vw, 100px);
+  left: 49.6%;
+  width: min(41vw, 720px);
+}
+
+@media (max-width: 1199px) {
+  .hero-image {
+    left: 52%;
+  }
+}
+
+@media (max-width: 1023px) {
+  .hero-content {
+    max-width: 52%;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero {
+    display: block;
+    min-height: 0;
+    padding: calc(80px + min(84vw, 350px)) var(--gutter) 64px;
+    /* Velvet only in the top-right corner, faded out behind the text */
+    background:
+      linear-gradient(var(--color-ivory) 72px, transparent 140px 280px, var(--color-ivory) 400px),
+      linear-gradient(to right, var(--color-ivory) 45%, transparent 75%),
+      url("../assets/images/hero-wave.webp") right -27.2vw top calc(120px - 13.7vw) / 236vw auto no-repeat,
+      var(--color-ivory);
+  }
+
+  .hero-content {
+    max-width: none;
+  }
+
+  /* Head-to-waist crop behind the text, fading out above the buttons */
+  .hero-image {
+    top: 70px;
+    left: 50%;
+    width: min(151vw, 620px);
+    max-width: none;
+    height: min(164vw, 680px);
+    object-fit: cover;
+    object-position: top;
+    transform: translateX(-35%);
+    mask-image: linear-gradient(#000 55%, transparent);
+  }
+
+  .hero-title {
+    margin: 16px 0 24px;
+  }
+
+  .hero-actions {
+    margin-top: 32px;
+  }
+}
