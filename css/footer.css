@@ -82,10 +82,15 @@
   padding: 14px 20px;
   background: transparent;
   border: 0;
-  outline-offset: -4px;
+  outline: none;
   font-size: 0.75rem;
   letter-spacing: 0.12em;
   color: var(--color-ivory);
+}
+
+.newsletter-form input:focus,
+.newsletter-form input:focus-visible {
+  outline: none;
 }
 
 .newsletter-form input::placeholder {
