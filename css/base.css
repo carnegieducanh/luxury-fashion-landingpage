@@ -20,13 +20,14 @@
   box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
-@media (prefers-reduced-motion: reduce) {
+/* Tablet & mobile: hide the vertical scrollbar but keep the page scrollable */
+@media (max-width: 1199px) {
   html {
-    scroll-behavior: auto;
+    scrollbar-width: none;
+  }
+
+  html::-webkit-scrollbar {
+    display: none;
   }
 }
 

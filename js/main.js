@@ -5,6 +5,8 @@ function setMenu(isOpen) {
   mainNav.classList.toggle("is-open", isOpen);
   menuButton.setAttribute("aria-expanded", isOpen);
   document.body.classList.toggle("menu-open", isOpen);
+  // Freeze smooth scrolling under the open menu, like body.menu-open does for native scroll
+  isOpen ? lenis.stop() : lenis.start();
 }
 
 menuButton.addEventListener("click", () => {
@@ -30,6 +32,34 @@ newsletterForm.addEventListener("submit", (event) => {
 
 // With the OS "reduce motion" setting on, everything still fades in but nothing slides or zooms
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+// Smooth scroll (Lenis). Runs even with reduce motion: Windows reports that whenever
+// "Animation effects" is off, which would silently fall back to the native scroll.
+// Touch stays native (syncTouch is off by default), so only wheel and in-page links are smoothed.
+const lenis = new Lenis({
+  duration: 1.4,
+  easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+  smoothWheel: true,
+  wheelMultiplier: 0.9,
+  // Otherwise Lenis makes in-page link scrolls jump instantly under reduce motion
+  respectReducedMotion: false
+});
+
+// No GSAP on this page, so a plain RAF loop drives Lenis
+requestAnimationFrame(function raf(time) {
+  lenis.raf(time);
+  requestAnimationFrame(raf);
+});
+
+// Lenis's own `anchors` option doesn't cancel the native jump, so handle in-page links here.
+// Runs after the .main-nav listener has closed the menu and restarted Lenis.
+document.addEventListener("click", (event) => {
+  const link = event.target.closest('a[href^="#"]');
+  if (!link) return;
+  event.preventDefault();
+  // "#" and "#top" both scroll to the top of the page
+  lenis.scrollTo(link.getAttribute("href"), { duration: 1.2 });
+});
 
 const scrollReveal = ScrollReveal({
   distance: "30px",
